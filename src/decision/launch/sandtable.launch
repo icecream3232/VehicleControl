@@ -1,0 +1,41 @@
+<launch>
+	<!-- parameter -->
+	<param name="pid_p" type="int" value="10"/>
+	<param name="pid_i" type="int" value="1"/>
+	<param name="pid_d" type="int" value="1"/>
+	
+	<param name="vehicle_id" type="int" value="8"/>
+	
+	<param name="imu_frequency_Hz" type="int" value="20"/>
+	<param name="camera_frequency_Hz" type="int" value="20"/>
+	<param name="v2i_frequency_Hz" type="int" value="20"/>
+	<param name="v2c_frequency_Hz" type="int" value="10"/>
+	<param name="lidar_frequency_Hz" type="int" value="20"/>
+	<param name="decision_frequency_Hz" type="int" value="20"/>
+	<param name="speed_ctl_frequency_Hz" type="int" value="20"/>
+	<param name="lateral_ctl_frequency_Hz" type="int" value="20"/>
+	<param name="chassis_ctl_frequency_Hz" type="int" value="20"/>
+	<param name="target_ip" type="string" value="192.168.10.100"/>
+	<param name="target_port" type="string" value="4007"/>
+	
+	<!-- sensor -->
+	<node name="v2c" pkg="v2c" type="v2c_node" output="screen"/>
+	<node name="v2i" pkg="v2i" type="v2i_node" output="screen"/>
+	<!-- decision -->
+	<node name="decision" pkg="decision" type="decision_node" output="screen"/>
+	<!-- node name="imu_nfc" pkg="imu_nfc" type="imu_nfc_node" output="log"/ -->
+	<!-- node name="lidar" pkg="lidar" type="lidar_node" output="log"/ -->
+	<!-- node name="camera" pkg="camera" type="camera_node" output="log"/ -->
+	
+	<!-- control --> 
+	<!-- <node name="chassis_control" pkg="chassis_control" type="chassis_control_node" output="log"/> -->
+	<!-- node name="lateral_control" pkg="lateral_control" type="lateral_control_node" output="log"/ -->
+	<!-- node name="speed_control" pkg="speed_control" type="speed_control_node" output="log"/ -->
+	
+	
+	
+	<!-- node name=节点名 pkg=包名 type=可执行文件名 output="log"/ -->
+	<!-- name选项 覆盖ros::init的节点名 -->
+	
+	<!-- node name="rviz" pkg="rviz" type="rviz" args="-d $(find lateral_control)/rviz/lateral_control.rviz" required="true" / -->
+</launch>
