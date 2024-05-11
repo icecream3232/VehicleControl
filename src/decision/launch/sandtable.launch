@@ -4,7 +4,7 @@
 	<param name="pid_i" type="int" value="1"/>
 	<param name="pid_d" type="int" value="1"/>
 	
-	<param name="vehicle_id" type="int" value="8"/>
+	<!-- <param name="vehicle_id" type="int" value="8"/> -->
 	
 	<param name="imu_frequency_Hz" type="int" value="20"/>
 	<param name="camera_frequency_Hz" type="int" value="20"/>
@@ -15,9 +15,17 @@
 	<param name="speed_ctl_frequency_Hz" type="int" value="20"/>
 	<param name="lateral_ctl_frequency_Hz" type="int" value="20"/>
 	<param name="chassis_ctl_frequency_Hz" type="int" value="20"/>
-	<param name="target_ip" type="string" value="192.168.10.100"/>
-	<param name="target_port" type="string" value="4007"/>
-	
+	<param name="target_ip" type="string" value="192.168.0.108"/>
+	<!-- <param name="target_port" type="string" value="4007"/> -->
+
+	<arg name="ip_address" default="$(hostname -I | grep -oE '192\.168\.0\.[0-9]+')" />
+
+	<param if="$(eval $(arg ip_address == '192.168.0.100'))" name="vehicle_id" type="int" value="1" />
+	<param if="$(eval $(arg ip_address == '192.168.0.105'))" name="vehicle_id" type="int" value="6" />
+
+	<param if="$(eval $(arg ip_address == '192.168.0.100'))" name="target_port" type="string" value="4000" />
+	<param if="$(eval $(arg ip_address == '192.168.0.105'))" name="target_port" type="string" value="4005" />
+
 	<!-- sensor -->
 	<node name="v2c" pkg="v2c" type="v2c_node" output="screen"/>
 	<node name="v2i" pkg="v2i" type="v2i_node" output="screen"/>
