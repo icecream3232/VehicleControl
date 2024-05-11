@@ -18,13 +18,32 @@
 	<param name="target_ip" type="string" value="192.168.0.108"/>
 	<!-- <param name="target_port" type="string" value="4007"/> -->
 
-	<arg name="ip_address" default="$(optenv CAR_IP '192.168.0.99')" />
+	<arg name="car1" default="false" />
+	<arg name="car2" default="false" />
+	<arg name="car3" default="false" />
+	<arg name="car4" default="false" />
+	<arg name="car5" default="false" />
+	<arg name="car6" default="false" />
+	<arg name="car7" default="false" />
+	<arg name="car8" default="false" />
+	
+	<param if="$(arg car1)" name="vehicle_id" type="int" value="1" />
+	<param if="$(arg car2)" name="vehicle_id" type="int" value="2" />
+	<param if="$(arg car3)" name="vehicle_id" type="int" value="3" />
+	<param if="$(arg car4)" name="vehicle_id" type="int" value="4" />
+	<param if="$(arg car5)" name="vehicle_id" type="int" value="5" />
+	<param if="$(arg car6)" name="vehicle_id" type="int" value="6" />
+	<param if="$(arg car7)" name="vehicle_id" type="int" value="7" />
+	<param if="$(arg car8)" name="vehicle_id" type="int" value="8" />
 
-	<param if="$(eval $(arg ip_address == '192.168.0.100'))" name="vehicle_id" type="int" value="1" />
-	<param if="$(eval $(arg ip_address == '192.168.0.105'))" name="vehicle_id" type="int" value="6" />
-
-	<param if="$(eval $(arg ip_address == '192.168.0.100'))" name="target_port" type="string" value="4000" />
-	<param if="$(eval $(arg ip_address == '192.168.0.105'))" name="target_port" type="string" value="4005" />
+	<param if="$(arg car1)" name="target_port" type="string" value="4000" />
+	<param if="$(arg car2)" name="target_port" type="string" value="4001" />
+	<param if="$(arg car3)" name="target_port" type="string" value="4002" />
+	<param if="$(arg car4)" name="target_port" type="string" value="4003" />
+	<param if="$(arg car5)" name="target_port" type="string" value="4004" />
+	<param if="$(arg car6)" name="target_port" type="string" value="4005" />
+	<param if="$(arg car7)" name="target_port" type="string" value="4006" />
+	<param if="$(arg car8)" name="target_port" type="string" value="4007" />
 
 	<!-- sensor -->
 	<node name="v2c" pkg="v2c" type="v2c_node" output="screen"/>
