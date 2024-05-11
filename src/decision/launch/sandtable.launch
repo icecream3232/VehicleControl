@@ -18,7 +18,7 @@
 	<param name="target_ip" type="string" value="192.168.0.108"/>
 	<!-- <param name="target_port" type="string" value="4007"/> -->
 
-	<arg name="ip_address" default="$(optenv ROS_IP '192.168.0.99')" />
+	<arg name="ip_address" default="$(optenv CAR_IP '192.168.0.99')" />
 
 	<param if="$(eval $(arg ip_address == '192.168.0.100'))" name="vehicle_id" type="int" value="1" />
 	<param if="$(eval $(arg ip_address == '192.168.0.105'))" name="vehicle_id" type="int" value="6" />
